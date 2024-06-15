@@ -1,4 +1,5 @@
 Trello Board: https://trello.com/b/QeSgiOOx/wdd-330-group-6-sleep-outside
 
 - Leonardo Guarino
-- Cindy Mazza
+
+-Cindy Mazza
