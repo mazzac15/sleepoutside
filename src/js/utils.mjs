@@ -17,7 +17,7 @@ export function setLocalStorage(key, product) {
   let updatedData = [];
   // if any, covert it in a json
   if (existingData) {
-    
+
     updatedData = JSON.parse(existingData);
 
     if (!Array.isArray(updatedData)) {
@@ -32,7 +32,7 @@ export function setLocalStorage(key, product) {
 }
 
 export function deleteLocalStorage(key, productId) {
-   
+
   const existingData = localStorage.getItem(key);
 
   let updatedData = [];
@@ -83,4 +83,34 @@ export function renderListWithTemplate(
     parentElement.innerHTML = "";
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  callback
+) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+
+  if (callback) {
+    callback(data);
+  };
+}
+
+async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+// function to dynamically load the header and footer into a page
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
 }
