@@ -70,6 +70,18 @@ export function getParams(param) {
   return product;
 }
 
+export function getMultipleParams(...params) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const result = {};
+  params.forEach(param => {
+    result[param] = urlParams.get(param);
+
+  });
+  console.log(result);
+  return result;
+}
+
 export function renderListWithTemplate(
   templateFn,
   parentElement,
