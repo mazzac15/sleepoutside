@@ -4,7 +4,7 @@ function productCardTemplate(product) {
   return `<li class="product-card">
   <a href="product_pages/index.html?product=${product.Id}">
   <img
-    src="${product.Image}"
+    src="${product.Images.PrimaryMedium}"
     alt="Image of ${product.Name}"
   />
   <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -23,29 +23,31 @@ export default class ProductList {
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     // filter product that will be rendered and limited to only 4 items.
-    const filteredList = this.filterRenders(list);
+    // const filteredList = this.filterRenders(list);
     // render the list
-    this.renderList(filteredList);
+    // this.renderList(filteredList);
+    this.renderList(list);
+    document.querySelector(".title").innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
   }
   // render after doing the first stretch
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-  filterRenders(list) {
-    // Filter the list to only include products with render set to true
-    const filteredList = list.filter(product => product.render);
+  // filterRenders(list) {
+  //   // Filter the list to only include products with render set to true
+  //   const filteredList = list.filter(product => product.render);
   
-    // Check if the new list contains more than 4 items
-    if (filteredList.length > 4) {
-      // If more than 4 items, truncate the list to the first 4 items
-      return filteredList.slice(0, 4);
-    }
+  //   // Check if the new list contains more than 4 items
+  //   if (filteredList.length > 4) {
+  //     // If more than 4 items, truncate the list to the first 4 items
+  //     return filteredList.slice(0, 4);
+  //   }
   
-    // Return the new list (which could be less than or equal to 4 items)
-    return filteredList;
-  }
+  //   // Return the new list (which could be less than or equal to 4 items)
+  //   return filteredList;
+  // }
   
 
   

@@ -8,7 +8,7 @@ function productDetailsTemplate(product) {
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Image}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">$${product.FinalPrice}</p>
@@ -42,7 +42,7 @@ export default class ProductDetails {
         .getElementById("addToCart")
         .addEventListener("click", this.addToCart.bind(this));
     } catch (error) {
-      return ("Error intializing ProduckDetails:", error);
+      return ("Error intializing ProductDetails:", error);
     }
   }  
   addToCart() {
