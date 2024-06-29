@@ -1,6 +1,7 @@
 import { getLocalStorage, deleteLocalStorage} from "./utils.mjs"
 
 function cartItemTemplate(item) {
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -25,24 +26,25 @@ export default class ShoppingCart {
     this.key = key;
     this.parentSelector = parentSelector;
   }
-
+  removeToCart(productId) {
+    deleteLocalStorage(this.key, productId);
+    this.renderCartContents();
+  }  
   renderCartContents() {
-    let cartItems = getLocalStorage(this.key) || [];
+    let cartItems = getLocalStorage(this.key);
+    if (!Array.isArray(cartItems)) {
+      cartItems = [cartItems];
+    }
 
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
 
     document.querySelectorAll(".cart-card__remove").forEach((button) => {
       button.addEventListener("click", (event) => {
-        const productId = event.getAttribute("data-id");
-        this.removeFromCart(productId);
+        const productId = event.currentTarget.getAttribute("data-id");
+        this.removeToCart(productId);
       });
     });
 
-  }
-
-  removeFromCart(productId) {
-    deleteLocalStorage(this.key, productId);
-    this.renderCartContents();
   }
 }
