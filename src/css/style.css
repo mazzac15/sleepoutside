@@ -290,16 +290,16 @@ button {
 
 /* Form */
 
-
+/* 
 h1,
 h2 {
   margin: 0;
-}
+} */
 
-h2,
+/* h2,
 #currentdate {
   color: yellow;
-}
+} */
 
 /* main {
   margin: 10px auto;
@@ -329,13 +329,13 @@ input {
   width: 100px;
 }
 
-.gridform {
+.checkout-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: .25rem;
 }
 
-.gridform label {
+.checkout-form label {
   text-align: right;
 }
 
