@@ -1,5 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
+// function packageItems(items) {}
+
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
       this.key = key;
@@ -46,5 +48,6 @@ export default class CheckoutProcess {
       tax.innerText = "$" + this.tax;
       orderTotal.innerText = "$" + this.orderTotal;
     }
-   
-    }
+    // async checkout (form) {}
+  }
+
