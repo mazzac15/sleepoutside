@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import { getMultipleParams, loadHeaderFooter } from "./utils.mjs";
 
@@ -8,7 +8,7 @@ loadHeaderFooter();
 //the category was missing, so I thought to pass the category via the href. You'll see the modification also in the href in productList, in the template.
 //
 const { category, product } = getMultipleParams("category", "product");
-const dataSource = new ProductData(category);
+const dataSource = new ExternalServices(category);
 
 const productElement = new ProductDetails(product, dataSource);
 productElement.init();
