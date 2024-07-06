@@ -1,9 +1,21 @@
 import { getLocalStorage, getCartTotal } from "./utils.mjs";
-
-// function packageItems(items) {}
+import ExternalServices from "./ExternalServices.mjs";
 
 const totalCart = getCartTotal()
 console.log("TotalCart:", totalCart)
+
+const services = new ExternalServices();
+
+function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
 
 export class CheckoutProcess {
   constructor(key, outputSelector) {
@@ -56,14 +68,60 @@ export class CheckoutProcess {
   }
   addZipCodeListener() {
     const zipInput = document.querySelector("input[name='zip']");
-    zipInput.addEventListener("input", () => {
-      if (zipInput.value.length === 5) { // Assuming a US ZIP code length of 5 digits
-        this.calculateOrderTotal();
-      }
+    zipInput.addEventListener("blur", () => {
+      this.calculateOrderTotal();
+
     });
   }
+
+  packageItems(items) {
+    const simplifiedItems = items.map((item) => {
+      //console.log(item);
+      return {
+        id: item.Id,
+        price: item.FinalPrice,
+        name: item.Name,
+        quantity: this.countProductById(item.Id),
+      };
+    });
+    return simplifiedItems;
+  }
+  // packageItems() {
+
+  //   const transformedData = this.list.map(item => ({
+  //     id: item.Id,
+  //     name: item.Name,
+  //     price: item.FinalPrice,
+  //     quantity: this.countProductById(item.Id)
+  //   }));
+  //   return { transformedData };
+  // }
+  countProductById(productId) {
+    let count = 0;
+    for (const item of this.list) {
+      if (item.Id === productId) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
+  async checkout() {
+    const formElement = document.forms["checkout"];
+
+    const json = formDataToJSON(formElement);
+    // add totals, and item details
+    json.orderDate = new Date();
+    json.orderTotal = this.orderTotal;
+    json.tax = this.tax;
+    json.shipping = this.shipping;
+    json.items = this.packageItems(this.list);
+    console.log(json);
+    try {
+      const res = await services.checkout(json);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
-
-const checkout = new CheckoutProcess("so-cart", ".checkout-summary");
-
-checkout.init();
