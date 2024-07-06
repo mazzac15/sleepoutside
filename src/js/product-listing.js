@@ -1,6 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import { loadHeaderFooter, getParams } from "./utils.mjs";
+import { loadHeaderFooter, getParams, updateCartBadge } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -21,3 +21,5 @@ const listing = new ProductList(category, dataSource, element);
 
 // finally call the init method to show our products
 listing.init();
+
+updateCartBadge();
