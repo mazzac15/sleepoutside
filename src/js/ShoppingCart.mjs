@@ -1,4 +1,4 @@
-import { getLocalStorage, deleteLocalStorage, updateCartBadge } from "./utils.mjs";
+import { getLocalStorage, deleteLocalStorage} from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -60,7 +60,6 @@ export default class ShoppingCart {
     } else {
       cartFooter.classList.add("hide");
     }
-    updateCartBadge();
 
   }
 }
