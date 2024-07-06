@@ -40,13 +40,13 @@ export function getCartCount() {
 }
 
 export function updateCartBadge(data) {
-  const cartCountElement = document.querySelector("cart-count");
+  const cartCountElement = document.querySelector(".cart-count");
 
   if (cartCountElement) {
     if (data !== undefined) {
       cartCountElement.innerText = data.toString();
     } else {
-      const cartCount = getCartCount(); // Assuming getCartCount is an asynchronous function //
+      const cartCount = getCartCount(); // Assuming getCartCount is an asynchronous function
       cartCountElement.innerText = cartCount.toString();
     }
   } else {
