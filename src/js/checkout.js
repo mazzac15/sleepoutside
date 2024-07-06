@@ -9,7 +9,7 @@ myCheckout.init();
 document;
 // listening for click on the button
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    myCheckout.checkout();
+  myCheckout.checkout();
 });

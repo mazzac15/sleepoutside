@@ -1,95 +1,86 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Checkout</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/checkout.js" type="module"></script>
+    <script src="../js/CheckoutProcess.mjs" type="module"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Outside | Checkout</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <script src="../js/checkout.js" type="module"></script>
-  <script src="../js/CheckoutProcess.mjs" type="module"></script>
-</head>
+  <body>
+    <header class="divider" id="main-header">
+      <!-- Using templates in /partials/header.html -->
+    </header>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Outside | Checkout</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <script src="../js/checkout.js" type="module"></script>
-  <script src="../js/CheckoutProcess.mjs" type="module"></script>
-</head>
-
-<body>
-  <header class="divider" id="main-header">
-    <!-- Using templates in /partials/header.html -->
-  </header>
-
-  <main class="divider">
-    <h3>Checkout</h3>
-    <div class="checkout-container">
-      <section class="checkout-form">
-        <form name="checkout">
+    <main class="divider">
+      <h3>Checkout</h3>
+      <div class="checkout-container">
+        <section class="checkout-form">
+          <form name="checkout">
+            <fieldset>
+              <legend>Customer Information</legend>
+              <div class="checkoutName">
+                <label for="fname">First Name: </label>
+                <input name="fname" required />
+                <label for="lname">Lastname: </label>
+                <input name="lname" required />
+              </div>
+              <div class="checkoutAddress">
+                <label for="street">Address: </label>
+                <input name="street" required />
+                <label for="city">City: </label>
+                <input name="city" required />
+                <label for="state">State: </label>
+                <input name="state" required />
+                <label for="zip">Zip Code: </label>
+                <input name="zip" required />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Payment Method</legend>
+              <div class="paymentMethod">
+                <label for="cardNumber">Credit Card Number: </label>
+                <input name="cardNumber" required />
+                <label for="expiration">Expiration Date: </label>
+                <input name="expiration" required />
+                <label for="code">Security Code: </label>
+                <input name="code" required />
+              </div>
+            </fieldset>
+            <button id="checkoutSubmit" type="submit">Checkout</button>
+          </form>
+        </section>
+        <section class="checkout-summary">
           <fieldset>
-            <legend>Customer Information</legend>
-            <div class="checkoutName">
-              <label for="fname">First Name: </label>
-              <input name="fname" required />
-              <label for="lname">Lastname: </label>
-              <input name="lname" required />
-            </div>
-            <div class="checkoutAddress">
-              <label for="street">Address: </label>
-              <input name="street" required />
-              <label for="city">City: </label>
-              <input name="city" required />
-              <label for="state">State: </label>
-              <input name="state" required />
-              <label for="zip">Zip Code: </label>
-              <input name="zip" required />
-            </div>
+            <legend>Order Summary</legend>
+            <ul>
+              <li>
+                <label for="cartTotal"
+                  >Item Subtotal: (<span id="num-items"></span>)</label
+                >
+                <p name="cartTotal" id="cartTotal"></p>
+              </li>
+              <li>
+                <label for="shipping">Shipping Estimate: </label>
+                <p id="shipping"></p>
+              </li>
+              <li>
+                <label for="tax">Sales Tax: </label>
+                <p id="tax"></p>
+              </li>
+              <li>
+                <label for="orderTotal">Order Total: </label>
+                <p id="orderTotal"></p>
+              </li>
+            </ul>
           </fieldset>
-          <fieldset>
-            <legend>Payment Method</legend>
-            <div class="paymentMethod">
-              <label for="cardNumber">Credit Card Number: </label>
-              <input name="cardNumber" required />
-              <label for="expiration">Expiration Date: </label>
-              <input name="expiration" required />
-              <label for="code">Security Code: </label>
-              <input name="code" required />
-            </div>
-          </fieldset>
-          <button id="checkoutSubmit" type="submit">Checkout</button>
-        </form>
-      </section>
-      <section class="checkout-summary">
-        <fieldset>
-          <legend>Order Summary</legend>
-          <ul>
-            <li>
-              <label for="cartTotal">Item Subtotal: (<span id="num-items"></span>)</label>
-              <p name="cartTotal" id="cartTotal"></p>
-            </li>
-            <li>
-              <label for="shipping">Shipping Estimate: </label>
-              <p id="shipping"></p>
-            </li>
-            <li>
-              <label for="tax">Sales Tax: </label>
-              <p id="tax"></p>
-            </li>
-            <li>
-              <label for="orderTotal">Order Total: </label>
-              <p id="orderTotal"></p>
-            </li>
-          </ul>
-        </fieldset>
-      </section>
-    </div>
-  </main>
-  <footer id="main-footer">
-    <!-- Using templates in /partials/footer.html -->
-  </footer>
-</body>
-
+        </section>
+      </div>
+    </main>
+    <footer id="main-footer">
+      <!-- Using templates in /partials/footer.html -->
+    </footer>
+  </body>
 </html>
