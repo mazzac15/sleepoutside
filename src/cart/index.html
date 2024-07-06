@@ -18,20 +18,20 @@
       <!-- Using templates in /partials/header.html -->
     </header>
 
-<body>
-  <header class="divider" id="main-header">
-    <!-- Using templates in /partials/header.html -->
-  </header>
-  
-  <main class="divider">
-    <section class="products">
-      <h2>My Cart</h2>
+    <main class="divider">
+      <section class="products">
+        <h2>My Cart</h2>
 
-      <ul class="product-list"></ul>
+        <ul class="product-list"></ul>
+        <div class="cart-footer hide">
+          <p class="cart-total">Total: $<span id="cart-total"></span></p>
+          <a class="cart-checkout" href="/checkout/index.html">Checkout </a>
+        </div>
+      </section>
+    </main>
 
     <footer id="main-footer">
       <!-- Using templates in /partials/footer.html -->
-        <div class="cart-footer hide">
     </footer>
   </body>
 </html>

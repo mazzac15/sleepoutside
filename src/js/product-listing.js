@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParams } from "./utils.mjs";
 
@@ -11,8 +11,8 @@ const h2Element = document.querySelector(".products h2");
 //add the Category dinamically and add uppercase
 h2Element.textContent = `Top Products ${category.charAt(0).toUpperCase() + category.slice(1)}`;
 
-// first create an instance of our ProductData class.
-const dataSource = new ProductData(category);
+// first create an instance of our ExternalServices class.
+const dataSource = new ExternalServices(category);
 
 // then get the element we want the product list to render in
 const element = document.querySelector(".product-list");
