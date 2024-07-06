@@ -25,4 +25,3 @@ function addCheckoutEventListener() {
 }
 
 // Call the function to add the event listener
-
