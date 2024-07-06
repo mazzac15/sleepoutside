@@ -21,5 +21,3 @@ const listing = new ProductList(category, dataSource, element);
 
 // finally call the init method to show our products
 listing.init();
-
-updateCartBadge();
