@@ -46,7 +46,7 @@ export function updateCartBadge(data) {
     if (data !== undefined) {
       cartCountElement.innerText = data.toString();
     } else {
-      const cartCount = getCartCount(); // Assuming getCartCount is an asynchronous function
+      const cartCount = getCartCount(); // Assuming getCartCount is an asynchronous function //
       cartCountElement.innerText = cartCount.toString();
     }
   } else {
