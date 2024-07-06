@@ -30,6 +30,10 @@ export default class ShoppingCart {
     this.renderCartContents();
   }
 
+  calculateTotal(cartItems) {
+    return cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+  }
+
   renderCartContents() {
     let cartItems = getLocalStorage(this.key);
 
@@ -46,5 +50,16 @@ export default class ShoppingCart {
         this.removeToCart(productId);
       });
     });
+    const total = this.calculateTotal(cartItems);
+    const cartFooter = document.querySelector(".cart-footer");
+    const cartTotalElement = document.getElementById("cart-total");
+
+    if (cartItems.length > 0) {
+      cartTotalElement.textContent = total.toFixed(2);
+      cartFooter.classList.remove("hide");
+    } else {
+      cartFooter.classList.add("hide");
+    }
+
   }
 }

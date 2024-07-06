@@ -31,6 +31,30 @@ export function setLocalStorage(key, product) {
   localStorage.setItem(key, JSON.stringify(updatedData));
 }
 
+export function setCartCount(count) {
+  localStorage.setItem("cartCount", count);
+}
+
+export function getCartCount() {
+  return parseInt(localStorage.getItem("cartCount")) || 0;
+}
+
+export function updateCartBadge(data) {
+  const cartCountElement = document.querySelector(".cart-count");
+
+  if (cartCountElement) {
+    if (data !== undefined) {
+      cartCountElement.innerText = data.toString();
+    } else {
+      const cartCount = getCartCount(); // Assuming getCartCount is an asynchronous function
+      cartCountElement.innerText = cartCount.toString();
+    }
+  } else {
+    console.error("Element with class 'cart-count' not found.");
+  }
+}
+
+
 export function deleteLocalStorage(key, productId) {
 
   const existingData = localStorage.getItem(key);
