@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -357,7 +357,7 @@ legend {
 .paymentMethod {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: .25rem;
+  grid-gap: 0.25rem;
 }
 
 label {
