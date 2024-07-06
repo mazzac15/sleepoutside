@@ -1,7 +1,7 @@
 
 // ProductDetails.mjs in the "js" directory. This script file will contain the code to dynamically produce the product detail pages. 
 
-import { getLocalStorage, setLocalStorage, updateCartBadge, setCartCount } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -44,7 +44,6 @@ export default class ProductDetails {
     } catch (error) {
       return ("Error intializing ProduckDetails:", error);
     }
-    updateCartBadge();
   }
   addToCart() {
     let cartContents = getLocalStorage("so-cart");
@@ -53,8 +52,6 @@ export default class ProductDetails {
     }
     cartContents.push(this.product);
     setLocalStorage("so-cart", this.product);
-    setCartCount(cartContents.length);
-    updateCartBadge();
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
