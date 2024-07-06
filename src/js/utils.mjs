@@ -40,7 +40,7 @@ export function getCartCount() {
 }
 
 export function updateCartBadge(data) {
-  const cartCountElement = document.querySelector(".cart-count");
+  const cartCountElement = document.querySelector("cartCount");
 
   if (cartCountElement) {
     if (data !== undefined) {
