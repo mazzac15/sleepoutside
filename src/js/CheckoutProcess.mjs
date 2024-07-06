@@ -10,15 +10,15 @@ export class CheckoutProcess {
     this.key = key;
     this.outputSelector = outputSelector;
     this.list = [];
-    this.total = 0;
+    this.itemTotal = 0;
     this.shipping = 0;
     this.tax = 0;
     this.orderTotal = 0;
   }
   init() {
     this.list = getLocalStorage(this.key);
-
     this.calculateItemSummary();
+    this.addZipCodeListener();
   }
   calculateItemSummary() {
     console.log("list:", this.list)
@@ -31,8 +31,8 @@ export class CheckoutProcess {
     );
     itemNumElement.innerText = this.list.length;
     const amounts = this.list.map((item) => item.FinalPrice);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
-    summaryElement.innerText = "$" + this.itemTotal;
+    this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
+    summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
   }
   calculateOrderTotal() {
     this.shipping = 10 + (this.list.length - 1) * 2;
@@ -45,21 +45,25 @@ export class CheckoutProcess {
     this.displayOrderTotals();
   }
   displayOrderTotals() {
-    const shipping = document.querySelector(this.outputSelector + " #shipping");
-    const tax = document.querySelector(this.outputSelector + " #tax")
-    const orderTotal = document.querySelector(
+    const shippingElement = document.querySelector(this.outputSelector + " #shipping");
+    const taxElement = document.querySelector(this.outputSelector + " #tax");
+    const orderTotalElement = document.querySelector(
       this.outputSelector + " #orderTotal"
     );
-    shipping.innertext = "$" + this.shipping;
-    tax.innerText = "$" + this.tax;
-    orderTotal.innerText = "$" + this.orderTotal;
+    shippingElement.innerText = "$" + this.shipping.toFixed(2);
+    taxElement.innerText = "$" + this.tax;
+    orderTotalElement.innerText = "$" + this.orderTotal;
   }
-  // async checkout (form) {}
+  addZipCodeListener() {
+    const zipInput = document.querySelector("input[name='zip']");
+    zipInput.addEventListener("input", () => {
+      if (zipInput.value.length === 5) { // Assuming a US ZIP code length of 5 digits
+        this.calculateOrderTotal();
+      }
+    });
+  }
 }
 
 const checkout = new CheckoutProcess("so-cart", ".checkout-summary");
 
 checkout.init();
-
-
-
