@@ -39,6 +39,18 @@ export function getCartCount() {
   return parseInt(localStorage.getItem("cartCount")) || 0;
 }
 
+export function setCartTotal(total) {
+  localStorage.setItem("cartTotal", total);
+}
+
+export function getCartTotal() {
+  return parseInt(localStorage.getItem("cartTotal")) || 0;
+}
+
+export function deleteCartTotal() {
+  localStorage.removeItem("cartTotal");
+}
+
 export function updateCartBadge(data) {
   const cartCountElement = document.querySelector(".cart-count");
 

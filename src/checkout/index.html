@@ -4,65 +4,62 @@
 
 <head>
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Sleep Outside | Checkout</title>
-
   <link rel="stylesheet" href="/css/style.css" />
-  <script src="/js/checkout.js" type="module"></script>
+  <script src="../js/checkout.js" type="module"></script>
+  <script src="../js/CheckoutProcess.mjs" type="module"></script>
 </head>
 
 <body>
   <header class="divider" id="main-header"><!-- Using templates in /partials/header.html --></header>
 
   <main class="divider">
-
     <h3>Checkout</h3>
-    <section class="checkout-form">
-      <form name="checkout">
+    <div class="checkout-container">
+      <section class="checkout-form">
+        <form name="checkout">
+          <fieldset>
+            <legend>Customer Information</legend>
+            <div class="checkoutName">
+              <label for="fName">First Name: </label>
+              <input name="fName" required>
+              <label for="lName">Lastname: </label>
+              <input name="lName" required>
+            </div>
+            <div class="checkoutAddress">
+              <label for="street">Address: </label>
+              <input name="street" required>
+              <label for="city">City: </label>
+              <input name="city" required>
+              <label for="state">State: </label>
+              <input name="state" required>
+              <label for="zip">Zip Code: </label>
+              <input name="zip" required>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Payment Method</legend>
+            <div class="paymentMethod">
+              <label for="creditCardNumber">Credit Card Number: </label>
+              <input name="creditCardNumber" required>
+              <label for="expirationDate">Expiration Date: </label>
+              <input name="expirationDate" required>
+              <label for="securityCode">Security Code: </label>
+              <input name="securityCode" required>
+            </div>
+          </fieldset>
+          <button type="button" onclick="doFV()">Confirm Checkout</button>
+        </form>
+      </section>
+      <section class="checkout-summary">
         <fieldset>
-          <legend>Customer Information</legend>
-          <div class="checkoutName">
-            <label for="fName">First Name: </label>
-            <input name="text" required>
-      
-            <label for="lName">Lastname: </label>
-            <input name="lName" required>
-          </div>
-          <div class="checkoutAddress">
-            <label for="street">Address: </label>
-            <input name="street" required>
-
-            <label for="city">City: </label>
-            <input name="city" required>
-    
-            <label for="state">State: </label>
-            <input name="state" required>
-    
-            <label for="zip">Zip Code: </label>
-            <input name="zip" required>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Payment Method</legend>
-          <label for="creditCardNumber">Credit Card Number: </label>
-          <input name="creditCardNumber" required>
-    
-          <label for="expirationDate">Expiration Date: </label>
-          <input name="expirationDate" required>
-    
-          <label for="securityCode">Security Code: </label>
-          <input name="securityCode" required>
-          </div>
-      
-        </fieldset>  
-        <fieldset class="checkout-summary">
           <legend>Order Summary</legend>
           <ul>
             <li>
-              <label for="cartTotal">Item Subtotal: (<span id="quantity"></span>)</label>
-              <p name="cartTotal" id="cartTotal"></p>
+              <label for="cartTotal">Item Subtotal: (<span id="num-items"></span>) <p name="cartTotal" id="cartTotal">
+                </p></label>
+
             </li>
             <li>
               <label for="shipping">Shipping Estimate: </label>
@@ -78,18 +75,10 @@
             </li>
           </ul>
         </fieldset>
-        
-        <button onclick="doFV()">Confirm Checkout</button>
-
-      </form>
-    </section>
-    
-    
-
-
+      </section>
+    </div>
   </main>
   <footer id="main-footer"> <!-- Using templates in /partials/footer.html --> </footer>
-
 </body>
 
 </html>
