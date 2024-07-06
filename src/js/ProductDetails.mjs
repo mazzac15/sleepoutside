@@ -47,13 +47,10 @@ export default class ProductDetails {
     updateCartBadge();
   }
   addToCart() {
-    let cartContents = getLocalStorage("so-cart");
-    if(!cartContents) {
-      cartContents = [];
-    }
-    cartContents.push(this.product);
-    setLocalStorage("so-cart", this.product);
-    setCartCount(cartContents.length);
+    const cartItems = getLocalStorage("so-cart") || [];
+    cartItems.push(this.product);
+    setLocalStorage("so-cart", cartItems);
+    setCartCount(cartItems.length);
     updateCartBadge();
   }
   renderProductDetails(selector) {
