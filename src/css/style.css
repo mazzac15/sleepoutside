@@ -196,6 +196,17 @@ button {
   /* max-height: 120px; */
   align-items: center;
 }
+.cart-count {
+  content: attr(value);
+  font-size: 15px;
+  color: black;
+  background: hsl(107, 87%, 44%);
+  border-radius: 50%;
+  padding: 0 5px;
+  position: relative;
+  left: -20px;
+  top: -20px;
+}
 
 .cart-card__image {
   grid-row: 1/3;
