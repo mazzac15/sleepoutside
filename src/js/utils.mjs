@@ -32,11 +32,11 @@ export function setLocalStorage(key, product) {
 }
 
 export function setCartCount(count) {
-  localStorage.setItem("cartCount", count);
+  localStorage.setItem("cart-count", count);
 }
 
 export function getCartCount() {
-  return parseInt(localStorage.getItem("cartCount")) || 0;
+  return parseInt(localStorage.getItem("cart-count")) || 0;
 }
 
 export function updateCartBadge(data) {
