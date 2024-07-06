@@ -32,11 +32,11 @@ export function setLocalStorage(key, product) {
 }
 
 export function setCartCount(count) {
-  localStorage.setItem("cartCount", count);
+  localStorage.setItem("cart-count", count);
 }
 
 export function getCartCount() {
-  return parseInt(localStorage.getItem("cartCount")) || 0;
+  return parseInt(localStorage.getItem("cart-count")) || 0;
 }
 
 export function setCartTotal(total) {
@@ -52,7 +52,7 @@ export function deleteCartTotal() {
 }
 
 export function updateCartBadge(data) {
-  const cartCountElement = document.querySelector("cartCount");
+  const cartCountElement = document.querySelector(".cart-count");
 
   if (cartCountElement) {
     if (data !== undefined) {
