@@ -1,4 +1,4 @@
-import { getLocalStorage, deleteLocalStorage} from "./utils.mjs";
+import { getLocalStorage, deleteLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -42,6 +42,7 @@ export default class ShoppingCart {
     }
 
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
 
     document.querySelectorAll(".cart-card__remove").forEach((button) => {
