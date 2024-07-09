@@ -30,6 +30,7 @@ export class CheckoutProcess {
     this.shipping = 0;
     this.tax = 0;
     this.orderTotal = 0;
+    this.quantity = 0
   }
   init() {
     this.list = getLocalStorage(this.key);
@@ -45,7 +46,9 @@ export class CheckoutProcess {
     const itemNumElement = document.querySelector(
       this.outputSelector + " #num-items"
     );
-    itemNumElement.innerText = this.list.length;
+    const quantity = this.list.map((item) => item.quantity);
+    this.quantity = quantity.reduce((sum, item) => sum + item, 0);
+    itemNumElement.innerText = this.quantity;
     const amounts = this.list.map((item) => item.FinalPrice);
     this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
     summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
