@@ -196,6 +196,7 @@ button {
   /* max-height: 120px; */
   align-items: center;
 }
+
 .cart-count {
   content: attr(value);
   font-size: 15px;
@@ -408,6 +409,59 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Success message */
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full viewport height */
+  text-align: center;
+}
+
+#successMessage {
+  background-color: #e0f7fa;
+  /* Light cyan background */
+  border: 2px solid #00695c;
+  /* Teal border */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#successMessage p {
+  color: #004d40;
+  /* Darker teal */
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+
+#successMessage a {
+  color: #004d40;
+  /* Darker teal */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#successMessage a:hover {
+  text-decoration: underline;
+}
+
+/* Alert message in order verification */
+/* alert styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
+
+.alert > p {
+  margin: 0;
 }
 
 @media screen and (min-width: 500px) {

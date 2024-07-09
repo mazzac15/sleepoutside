@@ -1,8 +1,12 @@
-import { getLocalStorage, getCartTotal } from "./utils.mjs";
+import {
+  clearLocalStorage,
+  getLocalStorage,
+  alertMessage,
+  removeAllAlerts
+} from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
-const totalCart = getCartTotal()
-console.log("TotalCart:", totalCart)
+
 
 const services = new ExternalServices();
 
@@ -86,16 +90,7 @@ export class CheckoutProcess {
     });
     return simplifiedItems;
   }
-  // packageItems() {
 
-  //   const transformedData = this.list.map(item => ({
-  //     id: item.Id,
-  //     name: item.Name,
-  //     price: item.FinalPrice,
-  //     quantity: this.countProductById(item.Id)
-  //   }));
-  //   return { transformedData };
-  // }
   countProductById(productId) {
     let count = 0;
     for (const item of this.list) {
@@ -120,7 +115,15 @@ export class CheckoutProcess {
     try {
       const res = await services.checkout(json);
       console.log(res);
+      clearLocalStorage();
+      location.assign("/checkout/success.html");
     } catch (err) {
+      // get rid of any preexisting alerts.
+      removeAllAlerts();
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+
       console.log(err);
     }
   }
