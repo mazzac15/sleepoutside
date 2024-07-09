@@ -10,25 +10,31 @@ export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
+// export function setLocalStorage(key, product) {
+//   //get the new data
+//   const existingData = localStorage.getItem(key);
+//   // create a list to store the products
+//   let updatedData = [];
+//   // if any, covert it in a json
+//   if (existingData) {
+
+//     updatedData = JSON.parse(existingData);
+
+//     if (!Array.isArray(updatedData)) {
+//       updatedData = [];
+//     }
+//   }
+//   // Append the new product to the existing product list
+//   updatedData.push(product);
+
+//   // Store the updated data back to localStorage
+//   localStorage.setItem(key, JSON.stringify(updatedData));
+// }
+
 export function setLocalStorage(key, product) {
-  //get the new data
-  const existingData = localStorage.getItem(key);
-  // create a list to store the products
-  let updatedData = [];
-  // if any, covert it in a json
-  if (existingData) {
-
-    updatedData = JSON.parse(existingData);
-
-    if (!Array.isArray(updatedData)) {
-      updatedData = [];
-    }
-  }
-  // Append the new product to the existing product list
-  updatedData.push(product);
 
   // Store the updated data back to localStorage
-  localStorage.setItem(key, JSON.stringify(updatedData));
+  localStorage.setItem(key, JSON.stringify(product));
 }
 
 export function clearLocalStorage() {

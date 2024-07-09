@@ -1,7 +1,7 @@
 
 // ProductDetails.mjs in the "js" directory. This script file will contain the code to dynamically produce the product detail pages. 
 
-import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage, deleteLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -47,14 +47,37 @@ export default class ProductDetails {
   }
   addToCart() {
     let cartContents = getLocalStorage("so-cart");
+
     if (!cartContents) {
       cartContents = [];
     }
-    cartContents.push(this.product);
-    setLocalStorage("so-cart", this.product);
 
+    // Check if the product already exists in the cart
+    const existingProduct = cartContents.find(item => item.Id === this.product.Id);
+    console.log("existingProduct: ", existingProduct);
+    if (existingProduct) {
+      console.log("product exists: ", this.product.Name)
+      // If the product exists, increment its quantity
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+      setLocalStorage("so-cart", cartContents);
+
+      console.log("Qty incremented: ", existingProduct.quantity)
+    } else {
+      // If the product does not exist, add it with quantity 1
+      console.log("Product do not exists in cart")
+      this.product.quantity = 1;
+      console.log("quantity added: ", this.product.quantity)
+      cartContents.push(this.product);
+      setLocalStorage("so-cart", cartContents);
+      console.log("Item didn't exists and was added")
+
+    }
+    // Save updated cart contents back to localStorage
+    //deleteLocalStorage();
+
+    console.log("cartContent: ", cartContents);
     // Show a message to the user about the new item added
-    const alertMsg = `${this.product.Name} added to the cart`;
+    const alertMsg = `${this.product.Name} added to the cart, total ${existingProduct ? existingProduct.quantity : this.product.quantity}`;
     alertMessage(alertMsg);
   }
 
