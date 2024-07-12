@@ -1,7 +1,7 @@
 import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParams } from "./utils.mjs";
-
+import Alert from "./Alert.js";
 loadHeaderFooter();
 
 const category = getParams("category");
@@ -21,3 +21,6 @@ const listing = new ProductList(category, dataSource, element);
 
 // finally call the init method to show our products
 listing.init();
+
+//initialize the Alert class to show alerts
+new Alert("/public/json/alerts.json");
