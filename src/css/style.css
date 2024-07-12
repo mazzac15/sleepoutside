@@ -412,7 +412,7 @@ button:hover {
 }
 
 /* Success message */
-.success-container {
+.success {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -422,27 +422,16 @@ button:hover {
 }
 
 #successMessage {
-  background-color: #e0f7fa;
-  /* Light cyan background */
-  border: 2px solid #00695c;
-  /* Teal border */
+  background-color: #a4b8c4;
+  border: 2px solid #525b0f;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#successMessage p {
-  color: #004d40;
-  /* Darker teal */
-  font-size: 24px;
+#successMessage h2, h3 {
+  color: #303030;
   margin: 0 0 10px 0;
-}
-
-#successMessage a {
-  color: #004d40;
-  /* Darker teal */
-  text-decoration: none;
-  font-weight: bold;
 }
 
 #successMessage a:hover {

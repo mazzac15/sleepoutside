@@ -79,15 +79,15 @@ export class CheckoutProcess {
   }
 
   packageItems(items) {
-    const simplifiedItems = items.map((item) => {
+    const simplifiedItems = items.map((item) => 
       //console.log(item);
-      return {
+       ({
         id: item.Id,
         price: item.FinalPrice,
         name: item.Name,
         quantity: this.countProductById(item.Id),
-      };
-    });
+      })
+    );
     return simplifiedItems;
   }
 
