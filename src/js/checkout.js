@@ -14,15 +14,5 @@ document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   myForm.reportValidity();
   if (chk_status) {
     myCheckout.checkout();
-    // Redirect to /checkout/index.html
-    //window.location.href = "/checkout/success.html";
-    //console.log("Transaction successful, redirect to success/index.html")
-  }
+     }
 });
-
-// listening for click on the button
-// document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-//     e.preventDefault();
-
-//     myCheckout.checkout();
-// });
