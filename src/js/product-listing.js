@@ -23,4 +23,4 @@ const listing = new ProductList(category, dataSource, element);
 listing.init();
 
 //initialize the Alert class to show alerts
-new Alert("/public/json/alerts.json");
+new Alert("/json/alerts.json");
