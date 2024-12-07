@@ -12,3 +12,4 @@ const dataSource = new ExternalServices(category);
 
 const productElement = new ProductDetails(product, dataSource);
 productElement.init();
+//
